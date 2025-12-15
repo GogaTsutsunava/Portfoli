@@ -59,19 +59,21 @@ nav > * {
 }
 
 .middle {
-  width: 100%;
-  height: 100vh; /* ფოტო ავსებს ეკრანის სიმაღლეს */
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* თავიდან ავიცილოთ სკროლი */
+  width: 100%;
+  height: 100vh; /* მთლიან ეკრანს იკავებს */
+  overflow: hidden;
+  position: relative;
 }
 
 .middle img {
-  width: auto; /* სიგანე ავტომატურად */
-  height: 100%; /* სიმაღლე ეკრანის ბოლომდე */
-  object-fit: contain; /* პროპოციები დაცულია */
-  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto; /* ფიქსირებული პროპორციები */
+  height: auto; /* ფიქსირებული პროპორციები */
+  object-fit: contain; /* სრულად ეტევა, არ იჭრება */
 }
 
 .text {
@@ -242,7 +244,7 @@ nav > * {
     font-size: 1rem;
   }
   .middle {
-    height: 50vh;
+    height: 60vh;
   }
 }
 
