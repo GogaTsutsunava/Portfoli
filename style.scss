@@ -15,6 +15,10 @@ $nav-subtitle-margin: 3px;
 $hamburger-width: 30px;
 $hamburger-height: 22px;
 
+* {
+    box-sizing: border-box;
+}
+
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -92,11 +96,19 @@ nav>* {
 }
 
 .middle {
+    width: 100%;
+    height: 100vh;           /* ფოტო ავსებს ეკრანის სიმაღლეს */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 1.5rem;
+    overflow: hidden;        /* თავიდან ავიცილოთ სკროლი */
+}
+
+.middle img {
+    width: auto;             /* სიგანე ავტომატურად */
+    height: 100%;            /* სიმაღლე ეკრანის ბოლომდე */
+    object-fit: contain;     /* პროპოციები დაცულია */
+    display: block;
 }
 
 .text {
@@ -199,4 +211,85 @@ nav>* {
 .h5 {
     align-items: center;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .two-images img {
+        max-width: 100%;
+        /* მობილზე თითო სვეტად */
+        height: auto;
+    }
+
+    .text p,
+    .text-two p {
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .text p,
+    .text-two p {
+        font-size: 14px;
+        line-height: 1.8;
+        padding: 0 0.8rem;
+    }
+
+    .header-text h2 {
+        font-size: 18px;
+    }
+}
+
+.header-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    h2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+@media (max-width: 1024px) {
+
+    .text,
+    .text-two {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .two-images img {
+        max-width: 45%;
+        /* ორ სვეტად tablet-ზე */
+        height: auto;
+        flex-wrap: wrap;
+    }
+      .header-text h2 {
+        font-size: 2rem;
+    }
+    .header-text h2 span {
+        font-size: 1.2rem;
+    }
+    .middle {
+        height: 60vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-text h2 {
+        font-size: 1.5rem;
+    }
+    .header-text h2 span {
+        font-size: 1rem;
+    }
+    .middle {
+        height: 50vh;
+    }
 }
